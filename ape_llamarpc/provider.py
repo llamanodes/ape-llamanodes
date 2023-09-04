@@ -9,7 +9,7 @@ from web3.exceptions import ContractLogicError as Web3ContractLogicError
 from web3.gas_strategies.rpc import rpc_gas_price_strategy
 from web3.middleware import geth_poa_middleware
 
-_ENVIRONMENT_VARIABLE_NAMES = ("WEB3_LAMMARPC_PROJECT_ID", "WEB3_LAMMARPC_API_KEY")
+_ENVIRONMENT_VARIABLE_NAMES = ("WEB3_LLAMARPC_PROJECT_ID", "WEB3_LLAMARPC_API_KEY")
 
 
 def standard_llamarpc_subdomain(ecosystem_name, network_name):
