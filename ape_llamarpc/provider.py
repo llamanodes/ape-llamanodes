@@ -3,6 +3,7 @@ from typing import Dict, Tuple
 
 from ape.api import UpstreamProvider, Web3Provider
 from ape.exceptions import ContractLogicError, ProviderError, VirtualMachineError
+from ape.logging import logger
 from web3 import HTTPProvider, Web3
 from web3.exceptions import ContractLogicError as Web3ContractLogicError
 from web3.gas_strategies.rpc import rpc_gas_price_strategy
@@ -11,25 +12,29 @@ from web3.middleware import geth_poa_middleware
 _ENVIRONMENT_VARIABLE_NAMES = ("WEB3_LAMMARPC_PROJECT_ID", "WEB3_LAMMARPC_API_KEY")
 
 
+def standard_llamarpc_subdomain(ecosystem_name, network_name):
+    if network_name == "mainnet":
+        return ecosystem_name
+
+    return f"{ecosystem_name}-{network_name}"
+
+
 class LlamaProviderError(ProviderError):
     """
     An error raised by the LlamaRPC provider plugin.
     """
 
 
-class MissingProjectKeyError(LlamaProviderError):
-    def __init__(self):
-        env_var_str = ", ".join([f"${n}" for n in _ENVIRONMENT_VARIABLE_NAMES])
-        super().__init__(f"Must set one of {env_var_str}")
-
-
 class LlamaRPC(Web3Provider, UpstreamProvider):
     network_uris: Dict[Tuple[str, str], str] = {}
 
-    ecosystem_prefixes = {
-        "bsc": "binance",
-        "ethereum": "eth",
-        "polygon": "polygon",
+    subdomains = {
+        ("arbitrum", "mainnet"): "arbitrum",
+        ("bsc", "mainnet"): "binance",
+        ("ethereum", "mainnet"): "ethereum",
+        ("ethereum", "goerli"): "ethereum-goerli",
+        ("optimism", "mainnet"): "optimism",
+        ("polygon", "mainnet"): "polygon",
     }
 
     @property
@@ -44,17 +49,21 @@ class LlamaRPC(Web3Provider, UpstreamProvider):
             env_var = os.environ.get(env_var_name)
             if env_var:
                 key = env_var
+                # TODO: verify that env_var is a UUID or ULID
                 break
 
-        if not key:
-            if network_name != "mainnet":
-                raise LlamaProviderError("Public LlamaRPC only supports mainnet")
+        subdomain = self.subdomains.get((ecosystem_name, network_name))
+        if not subdomain:
+            subdomain = standard_llamarpc_subdomain(ecosystem_name, network_name)
+            logger.warning(
+                "Unsupported ecosystem: %s. Trying subdomain: %s", ecosystem_name, subdomain
+            )
 
-        prefix = self.ecosystem_prefixes.get(ecosystem_name)
-        if not prefix:
-            raise LlamaProviderError(f"Unsupported ecosystem: {ecosystem_name}")
+        network_uri = f"https://{subdomain}.llamarpc.com"
 
-        network_uri = f"https://{prefix}.llamarpc.com"
+        if key:
+            network_uri += f"/rpc/{key}"
+
         self.network_uris[(ecosystem_name, network_name)] = network_uri
         return network_uri
 
