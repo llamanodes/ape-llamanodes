@@ -3,9 +3,11 @@
 Use the [LlamaRPC](https://llamarpc.com/) provider plugin to interact with blockchains via APIs.
 This plugin supports the following ecosystems:
 
-- Ethereum
+- Ethereum (mainnet and goerli)
 - Polygon
 - BNB Smart Chain
+- Arbitrum (currently in alpha testing)
+- Optimism (currently in alpha testing)
 
 ## Dependencies
 
@@ -43,6 +45,8 @@ Either in your current terminal session or in your root RC file (e.g. `.bashrc`)
 ```bash
 export WEB3_LLAMARPC_PROJECT_ID=MY_API_TOKEN
 ```
+
+The provider will work without the environment variables, but it uses the free tier which has stricter limits.
 
 To use the LlamaRPC provider plugin in most commands, set it via the `--network` option:
 

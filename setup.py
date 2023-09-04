@@ -41,7 +41,7 @@ extras_require = {
     ],
 }
 
-# NOTE: `pip install -e .[dev]` to install package
+# NOTE: `pip install -e '.[dev]'` to install package
 extras_require["dev"] = (
     extras_require["test"]
     + extras_require["lint"]
