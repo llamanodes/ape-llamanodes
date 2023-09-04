@@ -8,8 +8,11 @@ from ape_llamarpc.provider import LlamaRPC
 @pytest.mark.parametrize(
     "ecosystem,network",
     [
-        ("ethereum", "mainnet"),
+        # ("arbitrum", "mainnet"),
         ("bsc", "mainnet"),
+        ("ethereum", "goerli"),
+        ("ethereum", "mainnet"),
+        # ("optimism", "mainnet"),
         ("polygon", "mainnet"),
     ],
 )

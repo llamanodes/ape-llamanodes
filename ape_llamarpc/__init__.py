@@ -3,10 +3,17 @@ from ape import plugins
 from .provider import LlamaRPC
 
 NETWORKS = {
-    "ethereum": [
+    "arbitrum": [
         "mainnet",
     ],
     "bsc": [
+        "mainnet",
+    ],
+    "ethereum": [
+        "mainnet",
+        "goerli",
+    ],
+    "optimism": [
         "mainnet",
     ],
     "polygon": [
