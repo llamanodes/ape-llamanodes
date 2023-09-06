@@ -62,7 +62,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="LlamaNodes",
-    author_email="bryan@llamanodes.com",
+    author_email="info@llamanodes.com",
     url="https://github.com/llamanodes/ape-llamanodes",
     include_package_data=True,
     install_requires=[
