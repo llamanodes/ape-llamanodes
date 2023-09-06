@@ -1,6 +1,6 @@
 # Quick Start
 
-Use the [LlamaRPC](https://llamarpc.com/) provider plugin to interact with blockchains via APIs.
+Use the [LlamaNodes](https://llamanodes.com/) provider plugin to interact with blockchains via APIs.
 This plugin supports the following ecosystems:
 
 - Ethereum (mainnet and goerli)
@@ -20,7 +20,7 @@ This plugin supports the following ecosystems:
 You can install the latest release via [`pip`](https://pypi.org/project/pip/):
 
 ```bash
-pip install ape-llamarpc
+pip install ape-llamanodes
 ```
 
 ### via `setuptools`
@@ -28,8 +28,8 @@ pip install ape-llamarpc
 You can clone the repository and use [`setuptools`](https://github.com/pypa/setuptools) for the most up-to-date version:
 
 ```bash
-git clone https://github.com/ApeWorX/ape-llamarpc.git
-cd ape-llamarpc
+git clone https://github.com/ApeWorX/ape-llamanodes.git
+cd ape-llamanodes
 python3 setup.py install
 ```
 
@@ -37,28 +37,30 @@ python3 setup.py install
 
 First, make sure you have one of the following environment variables set (it doesn't matter which one):
 
-- WEB3_LLAMARPC_PROJECT_ID
+- WEB3_LLAMANODES_API_KEY
+- WEB3_LLAMANODES_PROJECT_ID
 - WEB3_LLAMARPC_API_KEY
+- WEB3_LLAMARPC_PROJECT_ID
 
 Either in your current terminal session or in your root RC file (e.g. `.bashrc`), add the following:
 
 ```bash
-export WEB3_LLAMARPC_PROJECT_ID=MY_API_TOKEN
+export WEB3_LLAMANODES_API_KEY=MY_API_TOKEN
 ```
 
 The provider will work without the environment variables, but it uses the free tier which has stricter limits.
 
-To use the LlamaRPC provider plugin in most commands, set it via the `--network` option:
+To use the LlamaNodes provider plugin in most commands, set it via the `--network` option:
 
 ```bash
-ape console --network ethereum:mainnet:llamarpc
+ape console --network ethereum:mainnet:llamanodes
 ```
 
-To connect to LlamaRPC from a Python script, use the `networks` top-level manager:
+To connect to LlamaNodes from a Python script, use the `networks` top-level manager:
 
 ```python
 from ape import networks
 
-with networks.parse_network_choice("ethereum:mainnet:llamarpc") as provider:
+with networks.parse_network_choice("ethereum:mainnet:llamanodes") as provider:
     ...
 ```

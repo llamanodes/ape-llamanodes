@@ -9,7 +9,12 @@ from web3.exceptions import ContractLogicError as Web3ContractLogicError
 from web3.gas_strategies.rpc import rpc_gas_price_strategy
 from web3.middleware import geth_poa_middleware
 
-_ENVIRONMENT_VARIABLE_NAMES = ("WEB3_LLAMARPC_PROJECT_ID", "WEB3_LLAMARPC_API_KEY")
+_ENVIRONMENT_VARIABLE_NAMES = (
+    "WEB3_LLAMANODES_API_KEY",
+    "WEB3_LLAMANODES_PROJECT_ID",
+    "WEB3_LLAMARPC_API_KEY",
+    "WEB3_LLAMARPC_PROJECT_ID",
+)
 
 
 def standard_llamarpc_subdomain(ecosystem_name, network_name):
@@ -21,11 +26,11 @@ def standard_llamarpc_subdomain(ecosystem_name, network_name):
 
 class LlamaProviderError(ProviderError):
     """
-    An error raised by the LlamaRPC provider plugin.
+    An error raised by the LlamaNodes provider plugin.
     """
 
 
-class LlamaRPC(Web3Provider, UpstreamProvider):
+class LlamaNodes(Web3Provider, UpstreamProvider):
     network_uris: Dict[Tuple[str, str], str] = {}
 
     subdomains = {

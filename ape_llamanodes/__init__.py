@@ -1,6 +1,6 @@
 from ape import plugins
 
-from .provider import LlamaRPC
+from .provider import LlamaNodes
 
 NETWORKS = {
     "arbitrum": [
@@ -26,4 +26,4 @@ NETWORKS = {
 def providers():
     for ecosystem_name in NETWORKS:
         for network_name in NETWORKS[ecosystem_name]:
-            yield ecosystem_name, network_name, LlamaRPC
+            yield ecosystem_name, network_name, LlamaNodes
