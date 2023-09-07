@@ -8,11 +8,11 @@ from ape_llamanodes.provider import LlamaNodes
 @pytest.mark.parametrize(
     "ecosystem,network",
     [
-        # ("arbitrum", "mainnet"),
+        ("arbitrum", "mainnet"),
         ("bsc", "mainnet"),
         ("ethereum", "goerli"),
         ("ethereum", "mainnet"),
-        # ("optimism", "mainnet"),
+        ("optimism", "mainnet"),
         ("polygon", "mainnet"),
     ],
 )
