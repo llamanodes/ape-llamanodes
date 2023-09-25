@@ -4,10 +4,11 @@ Use the [LlamaNodes](https://llamanodes.com/) provider plugin to interact with b
 This plugin supports the following ecosystems:
 
 - Ethereum (mainnet and goerli)
+- Base (currently in alpha testing)
 - Polygon
 - BNB Smart Chain
-- Arbitrum (currently in alpha testing)
-- Optimism (currently in alpha testing)
+- Arbitrum
+- Optimism
 
 ## Dependencies
 

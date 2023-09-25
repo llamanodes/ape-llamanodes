@@ -35,6 +35,7 @@ class LlamaNodes(Web3Provider, UpstreamProvider):
 
     subdomains = {
         ("arbitrum", "mainnet"): "arbitrum",
+        ("base", "mainnet"): "base",
         ("bsc", "mainnet"): "binance",
         ("ethereum", "mainnet"): "ethereum",
         ("ethereum", "goerli"): "ethereum-goerli",

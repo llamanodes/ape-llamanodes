@@ -6,6 +6,9 @@ NETWORKS = {
     "arbitrum": [
         "mainnet",
     ],
+    "base": [
+        "mainnet",
+    ],
     "bsc": [
         "mainnet",
     ],

@@ -9,6 +9,7 @@ from ape_llamanodes.provider import LlamaNodes
     "ecosystem,network",
     [
         ("arbitrum", "mainnet"),
+        ("base", "mainnet"),
         ("bsc", "mainnet"),
         ("ethereum", "goerli"),
         ("ethereum", "mainnet"),
