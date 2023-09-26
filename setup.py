@@ -5,6 +5,7 @@ from setuptools import find_packages, setup
 extras_require = {
     "test": [  # `test` GitHub Action jobs uses this
         "ape-arbitrum",
+        "ape-base",
         "ape-bsc",
         "ape-optimism",
         "ape-polygon",
