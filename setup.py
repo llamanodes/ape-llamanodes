@@ -69,7 +69,7 @@ setup(
     url="https://github.com/llamanodes/ape-llamanodes",
     include_package_data=True,
     install_requires=[
-        "eth-ape>=0.6.5,<0.7",
+        "eth-ape>=0.7,<0.8",
     ],
     python_requires=">=3.8,<4",
     extras_require=extras_require,
